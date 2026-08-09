@@ -1,0 +1,223 @@
+# ~/.config/starship.toml
+add_newline = true
+command_timeout = 1000
+scan_timeout = 50
+
+format = """
+[┌──](bold green) $username$directory$git_branch$git_state$git_status$git_metrics$nodejs$bun$deno$python$ruby$golang$rust$java$kotlin$php$dotnet$swift$elixir$lua$zig$haskell$dart$c$package$conda$nix_shell$docker_context$kubernetes$aws$gcloud$azure$terraform$direnv$fill$cmd_duration$jobs$status$time
+[└─](bold green)$shlvl$sudo$character"""
+
+[fill]
+symbol = " "
+
+[character]
+success_symbol = "[>](bold green)"
+error_symbol   = "[>](bold red)"
+vicmd_symbol   = "[<](bold yellow)"
+
+[username]
+show_always = true
+style_user = "bold blue"
+style_root = "bold red"
+format = "[$user]($style) "
+
+[directory]
+truncation_length = 1
+truncate_to_repo = false
+truncation_symbol = ""
+style = "bold cyan"
+read_only = " ro"
+format = "in [$path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+format = "on [$symbol$branch]($style) "
+
+[git_status]
+style = "bold yellow"
+format = '([\[$all_status$ahead_behind\]]($style) )'
+conflicted = "="
+ahead = "^${count}"
+behind = "v${count}"
+diverged = "^${ahead_count}v${behind_count}"
+untracked = "?${count}"
+stashed = "$${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "x${count}"
+
+[git_state]
+style = "bold red"
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+
+[git_metrics]
+disabled = false
+added_style = "bold green"
+deleted_style = "bold red"
+format = "[+$added]($added_style)/[-$deleted]($deleted_style) "
+
+[cmd_duration]
+min_time = 2000
+style = "bold yellow"
+format = "took [$duration]($style) "
+
+[status]
+disabled = false
+symbol = "x"
+not_found_symbol = "?"
+sigint_symbol = "^C"
+signal_symbol = "!"
+style = "bold red"
+format = '[$symbol$status]($style) '
+map_symbol = true
+pipestatus = true
+
+[jobs]
+symbol = "&"
+style = "bold blue"
+number_threshold = 1
+format = "[$symbol$number]($style) "
+
+[shlvl]
+disabled = true
+symbol = "^"
+threshold = 3
+style = "bold yellow"
+format = "[$symbol$shlvl]($style) "
+
+[sudo]
+disabled = false
+symbol = "!"
+style = "bold red"
+format = "[$symbol]($style)"
+
+[time]
+disabled = false
+time_format = "%H:%M"
+style = "bright-black"
+format = "[$time]($style)"
+
+[nodejs]
+symbol = " "
+version_format = "v${major}.${minor}"
+format = "[${symbol}node $version](bold green) "
+
+[bun]
+symbol = " "
+format = "[${symbol}bun $version](bold #fbf0df) "
+
+[deno]
+symbol = " "
+format = "[${symbol}deno $version](bold green) "
+
+[python]
+symbol = " "
+version_format = "${major}.${minor}"
+format = '[${symbol}py $version( \($virtualenv\))](bold yellow) '
+
+[ruby]
+symbol = " "
+format = "[${symbol}rb $version](bold red) "
+
+[golang]
+symbol = " "
+version_format = "${major}.${minor}"
+format = "[${symbol}go $version](bold cyan) "
+
+[rust]
+symbol = " "
+format = "[${symbol}rs $version](bold red) "
+
+[java]
+symbol = " "
+version_format = "${major}"
+format = "[${symbol}java $version](bold red) "
+
+[kotlin]
+symbol = " "
+format = "[${symbol}kt $version](bold blue) "
+
+[php]
+symbol = " "
+format = "[${symbol}php $version](bold 147) "
+
+[dotnet]
+symbol = " "
+heuristic = true
+format = "[${symbol}dotnet $version](bold blue) "
+
+[swift]
+symbol = " "
+format = "[${symbol}swift $version](bold 202) "
+
+[elixir]
+symbol = " "
+format = "[${symbol}ex $version](bold purple) "
+
+[lua]
+symbol = " "
+format = "[${symbol}lua $version](bold blue) "
+
+[zig]
+symbol = " "
+format = "[${symbol}zig $version](bold yellow) "
+
+[haskell]
+symbol = " "
+format = "[${symbol}hs $version](bold purple) "
+
+[dart]
+symbol = " "
+format = "[${symbol}dart $version](bold blue) "
+
+[c]
+symbol = " "
+format = "[${symbol}c $version](bold blue) "
+
+[package]
+symbol = "󰏗 "
+format = "[${symbol}pkg $version](bold 208) "
+
+[conda]
+symbol = " "
+format = "[${symbol}conda $environment](bold green) "
+
+[nix_shell]
+symbol = " "
+format = "[${symbol}nix $state( \\($name\\))](bold blue) "
+
+[docker_context]
+symbol = " "
+only_with_files = true
+format = "[${symbol}docker $context](bold blue) "
+
+[kubernetes]
+disabled = false
+symbol = "󱃾 "
+detect_files = ["k8s", "kubeconfig", "skaffold.yaml", "Chart.yaml"]
+detect_folders = ["k8s", "helm"]
+format = '[${symbol}k8s $context( \($namespace\))](bold 105) '
+
+[aws]
+symbol = " "
+format = '[${symbol}aws $profile( \($region\))](bold 208) '
+
+[gcloud]
+symbol = "󱇶 "
+format = '[${symbol}gcp $project](bold blue) '
+
+[azure]
+symbol = "󰠅 "
+disabled = false
+format = "[${symbol}az $subscription](bold blue) "
+
+[terraform]
+symbol = "󱁢 "
+format = "[${symbol}tf $workspace](bold 105) "
+
+[direnv]
+disabled = false
+symbol = " "
+format = "[${symbol}direnv $loaded/$allowed](bold yellow) "
