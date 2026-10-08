@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# herdr runtime state (logs, sockets, sessions, caches)
+herdr/.config/herdr/*.log
+herdr/.config/herdr/*.sock
+herdr/.config/herdr/*.sock.*
+herdr/.config/herdr/.plugins.lock
+herdr/.config/herdr/session.json
+herdr/.config/herdr/session-snapshots/
+herdr/.config/herdr/release-notes.json
