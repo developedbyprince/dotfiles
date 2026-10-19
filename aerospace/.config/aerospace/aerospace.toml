@@ -130,3 +130,29 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
 run = 'layout floating'
+
+# ---------------------------------------------------------------------------
+# App → workspace assignments
+# ---------------------------------------------------------------------------
+# Workspace 1: terminal + notes, accordion layout
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = ['move-node-to-workspace 1', 'layout accordion horizontal']
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = ['move-node-to-workspace 1', 'layout accordion horizontal']
+
+# Workspace 2: browser
+[[on-window-detected]]
+if.app-id = 'com.microsoft.edgemac'
+run = 'move-node-to-workspace 2'
+
+# Workspace 3: database + API clients
+[[on-window-detected]]
+if.app-id = 'com.tinyapp.TablePlus'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.apidog.app'
+run = 'move-node-to-workspace 3'
